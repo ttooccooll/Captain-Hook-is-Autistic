@@ -56,6 +56,17 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
         console.log("Show Payment");
       }
     }, [gameCount, hasSignedIn, hasPaid]);
+
+    useEffect(() => {
+      // Reset game state when component mounts
+      setCurrentQuestion(0);
+      setUserAnswers([]);
+      setScore(0);
+      setShowSignIn(false);
+      setShowPayment(false);
+      setIsCorrect(null);
+      setShowFeedback(false);
+    }, []);
   
     const handleAnswer = (answer) => {
         setUserAnswers([...userAnswers, answer]);
