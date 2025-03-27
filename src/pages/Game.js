@@ -47,7 +47,7 @@ const initialQuestions = [
 ];
 
 const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
-    const [questions] = useState(shuffleArray([...initialQuestions]).slice(0, 10));
+    const [questions, setQuestions] = useState(shuffleArray([...initialQuestions]).slice(0, 10));
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
     const [score, setScore] = useState(0);
@@ -64,19 +64,22 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
       } else if (gameCount >= 3 && !hasPaid) {
         setShowPayment(true);
         console.log("Show Payment");
+      } else {
+        setShowSignIn(false);
+        setShowPayment(false);
+        resetGame();
       }
     }, [gameCount, hasSignedIn, hasPaid]);
 
-    useEffect(() => {
-      // Reset game state when component mounts
+    const resetGame = () => {
+      // Reset game state
+      setQuestions(shuffleArray([...initialQuestions]).slice(0, 10));
       setCurrentQuestion(0);
       setUserAnswers([]);
       setScore(0);
-      setShowSignIn(false);
-      setShowPayment(false);
       setIsCorrect(null);
       setShowFeedback(false);
-    }, []);
+    };
   
     const handleAnswer = (answer) => {
         setUserAnswers([...userAnswers, answer]);
@@ -105,10 +108,12 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
   
     const handleSignInSuccess = () => {
       setShowSignIn(false);
+      resetGame(); // Reset game state after sign-in
     };
-  
+    
     const handlePaymentSuccess = () => {
       setShowPayment(false);
+      resetGame(); // Reset game state after payment
     };
   
     return (
@@ -121,7 +126,7 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
               <div>
                 <Question question={questions[currentQuestion].text} onAnswer={handleAnswer} />
                 {showFeedback && (
-                  <div style={{ marginTop: '10px', color: isCorrect ? 'green' : 'red' }}>
+                  <div className="grading" style={{ marginTop: '2rem', color: isCorrect ? 'green' : 'red' }}>
                     {isCorrect ? 'Correct!' : `Wrong! The correct answer is ${questions[currentQuestion].answer}.`}
                   </div>
                 )}

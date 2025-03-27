@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from '../pages/Home';
-import Game from '../pages/Game';
-import Score from '../pages/Score';
-import SignIn from '../components/SignIn';
-import Payment from '../components/Payment';
+import Home from './pages/Home';
+import Game from './pages/Game';
+import Score from './pages/Score';
+import SignIn from './components/SignIn';
+import Payment from './components/Payment';
 import localForage from 'localforage';
 
 const App = () => {
