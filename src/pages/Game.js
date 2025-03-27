@@ -1,11 +1,18 @@
-
 import React, { useState, useEffect } from 'react';
 import Question from '../components/Question';
 import Result from '../components/Result';
 import SignIn from '../components/SignIn';
 import Payment from '../components/Payment';
 
-const questions = [
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+const initialQuestions = [
   { text: "Captain Hook is autistic and the last samurai takes him to Las Vegas?", answer: "Rainman" },
   { text: "Miss Piggy’s trains someone to kill Mufasa?", answer: "The Empire Strikes Back" },
   { text: "Spartacus berates the Terminator?", answer: "True Lies" },
@@ -25,73 +32,74 @@ const questions = [
 ];
 
 const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
-  const [score, setScore] = useState(0);
-  const [showSignIn, setShowSignIn] = useState(false);
-  const [showPayment, setShowPayment] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(null); // Track if the answer was correct
-  const [showFeedback, setShowFeedback] = useState(false); // Track if feedback should be shown
-
-  useEffect(() => {
-    if (gameCount === 2 && !hasSignedIn) {
-      setShowSignIn(true);
-    } else if (gameCount === 3 && !hasPaid) {
-      setShowPayment(true);
-    }
-  }, [gameCount, hasSignedIn, hasPaid]);
-
-  const handleAnswer = (answer) => {
-    setUserAnswers([...userAnswers, answer]);
-    const isCorrectAnswer = answer.toLowerCase() === questions[currentQuestion].answer.toLowerCase();
-    setIsCorrect(isCorrectAnswer);
-    setShowFeedback(true);
-
-    if (isCorrectAnswer) {
-      setScore(score + 1);
-    }
-
-    // Move to the next question after a short delay
-    setTimeout(() => {
-      setShowFeedback(false);
-      if (currentQuestion + 1 < questions.length) {
-        setCurrentQuestion(currentQuestion + 1);
-      } else {
-        onGameComplete(score);
+    const [questions, setQuestions] = useState(shuffleArray([...initialQuestions]));
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [userAnswers, setUserAnswers] = useState([]);
+    const [score, setScore] = useState(0);
+    const [showSignIn, setShowSignIn] = useState(false);
+    const [showPayment, setShowPayment] = useState(false);
+    const [isCorrect, setIsCorrect] = useState(null); // Track if the answer was correct
+    const [showFeedback, setShowFeedback] = useState(false); // Track if feedback should be shown
+  
+    useEffect(() => {
+      if (gameCount === 2 && !hasSignedIn) {
+        setShowSignIn(true);
+      } else if (gameCount === 3 && !hasPaid) {
+        setShowPayment(true);
       }
-    }, 1500); // Delay for 1.5 seconds
+    }, [gameCount, hasSignedIn, hasPaid]);
+  
+    const handleAnswer = (answer) => {
+      setUserAnswers([...userAnswers, answer]);
+      const isCorrectAnswer = answer.toLowerCase() === questions[currentQuestion].answer.toLowerCase();
+      setIsCorrect(isCorrectAnswer);
+      setShowFeedback(true);
+  
+      if (isCorrectAnswer) {
+        setScore(score + 1);
+      }
+  
+      // Move to the next question after a short delay
+      setTimeout(() => {
+        setShowFeedback(false);
+        if (currentQuestion + 1 < questions.length) {
+          setCurrentQuestion(currentQuestion + 1);
+        } else {
+          onGameComplete(score);
+        }
+      }, 1500); // Delay for 1.5 seconds
+    };
+  
+    const handleSignInSuccess = () => {
+      setShowSignIn(false);
+    };
+  
+    const handlePaymentSuccess = () => {
+      setShowPayment(false);
+    };
+  
+    return (
+      <div>
+        {showSignIn && <SignIn onSignIn={handleSignInSuccess} />}
+        {showPayment && <Payment onPaymentSuccess={handlePaymentSuccess} />}
+        {!showSignIn && !showPayment && (
+          <>
+            {currentQuestion < questions.length ? (
+              <div>
+                <Question question={questions[currentQuestion].text} onAnswer={handleAnswer} />
+                {showFeedback && (
+                  <div style={{ marginTop: '10px', color: isCorrect ? 'green' : 'red' }}>
+                    {isCorrect ? 'Correct!' : `Wrong! The correct answer is ${questions[currentQuestion].answer}.`}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Result score={score} totalQuestions={questions.length} />
+            )}
+          </>
+        )}
+      </div>
+    );
   };
-
-  const handleSignInSuccess = () => {
-    setShowSignIn(false);
-  };
-
-  const handlePaymentSuccess = () => {
-    setShowPayment(false);
-  };
-
-  return (
-    <div>
-      {showSignIn && <SignIn onSignIn={handleSignInSuccess} />}
-      {showPayment && <Payment onPaymentSuccess={handlePaymentSuccess} />}
-      {!showSignIn && !showPayment && (
-        <>
-          {currentQuestion < questions.length ? (
-            <div>
-              <Question question={questions[currentQuestion].text} onAnswer={handleAnswer} />
-              {showFeedback && (
-                <div style={{ marginTop: '10px', color: isCorrect ? 'green' : 'red' }}>
-                  {isCorrect ? 'Correct!' : `Wrong! The correct answer is ${questions[currentQuestion].answer}.`}
-                </div>
-              )}
-            </div>
-          ) : (
-            <Result score={score} totalQuestions={questions.length} />
-          )}
-        </>
-      )}
-    </div>
-  );
-};
-
-export default Game;
+  
+  export default Game;
