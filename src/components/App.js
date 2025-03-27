@@ -56,20 +56,14 @@ const App = () => {
     setFinalScore(0);
   };
 
-  const handleSignInSuccess = (nodeInfo) => {
+  const handleSignInSuccess = () => {
     setHasSignedIn(true);
     localForage.setItem('hasSignedIn', true);
-    console.log("SignIn successful with node info:", nodeInfo);
-    setShowScore(false);
-    setFinalScore(0);
   };
 
   const handlePaymentSuccess = () => {
     setHasPaid(true);
     localForage.setItem('hasPaid', true);
-    console.log("Payment successful");
-    setShowScore(false);
-    setFinalScore(0);
   };
 
   return (
