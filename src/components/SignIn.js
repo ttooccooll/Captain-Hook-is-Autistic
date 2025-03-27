@@ -1,20 +1,37 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const SignIn = ({ onSignIn }) => {
+  useEffect(() => {
+    // Check if WebLN is available
+    if (!window.webln) {
+      alert("WebLN provider not found. Please install a WebLN-compatible wallet.");
+    }
+  }, []);
+
   const handleSignIn = async () => {
     try {
-      const invoice = "lnbc100n1p3tlhj8pp5f2eww3..."; // Example invoice
-      const response = await window.lightning.signMessage(invoice);
-      onSignIn(response);
+      if (!window.webln) {
+        throw new Error("WebLN provider not found. Please install a WebLN-compatible wallet.");
+      }
+
+      console.log("Requesting WebLN enable...");
+      await window.webln.enable();
+      console.log("WebLN enabled successfully.");
+
+      console.log("Requesting WebLN getInfo...");
+      const info = await window.webln.getInfo();
+      console.log("WebLN Node Info:", info);
+
+      onSignIn(info.node);
     } catch (error) {
       console.error("Sign-in failed:", error);
+      alert("Sign-in failed: " + error.message);
     }
   };
 
   return (
     <div>
-      <h2>Sign In with WebLN</h2>
+      <h2>Sign In with WebLN. You are not being charged yet.</h2>
       <button onClick={handleSignIn}>Sign In</button>
     </div>
   );
