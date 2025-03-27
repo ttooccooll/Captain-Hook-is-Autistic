@@ -2,9 +2,13 @@
 
 body {
   font-family: 'CustomFont', sans-serif;
-  margin: 10%;
+  margin: 5%;
   padding: 0;
   box-sizing: border-box;
+  background-image: url('/public/pa.jpeg');
+  background-color: #654321;
+  color: #d2aeae;
+  text-shadow: #e40808 1px 3px 6px;
 }
 
 h1, h2, h3, h4, h5, h6, strong, b {
@@ -13,4 +17,265 @@ h1, h2, h3, h4, h5, h6, strong, b {
 
 .grading {
   font-size: 3rem;
+}
+
+input {
+  background-color: #d2aeae;
+}
+
+button {
+  position: relative;
+  text-shadow: darkgrey 1px 1px 1px, darkgrey -1px -1px 1px,
+    darkgrey -1px 1px 1px, darkgrey 1px -1px 1px;
+  margin-left: 2rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: bold;
+  background-color: red;
+  background-image: radial-gradient(
+    1.2rem 1.2rem,
+    circle closest-side,
+    red 0.5rem,
+    #ff8080 1rem,
+    #ff8080 1.2rem,
+    #cc0000 1.8rem
+  );
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+    rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem inset, red 0 0.3rem 0.4rem inset,
+    rgba(0, 0, 0, 0.3) 0 0.8rem 0.4rem inset,
+    rgba(255, 255, 255, 0.5) 0 -2px 3px inset, red 0 -7px 20px inset;
+  border-radius: 500px;
+  border: red 1px solid;
+  display: block;
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0.3rem;
+  background: #cc0000;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  box-shadow: rgba(204, 0, 0, 0.8) 0 4px 5px inset,
+    rgba(255, 255, 255, 0.5) 0 12px 5px inset,
+    rgba(153, 0, 0, 0.7) 0 -12px 5px inset, rgba(0, 0, 0, 0.8) 0 4px 8px;
+}
+
+button:hover {
+  cursor: pointer;
+  font-size: .7rem;
+  background-image: radial-gradient(
+    1.2rem 1.2rem,
+    circle closest-side,
+    red 0.5rem,
+    #ff8080 1.1rem,
+    #ff8080 1.2rem,
+    #cc0000 1.8rem
+  );
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+    rgba(275, 255, 255, 0.7) 0 0.1rem 0.1rem inset, tomato 0 0.3rem 0.4rem inset,
+    rgba(0, 0, 0, 0.3) 0 0.8rem 0.9rem inset,
+    rgba(255, 255, 275, 0.5) 0 -2px 3px inset, red 0 -7px 20px inset;
+}
+
+button:active {
+  cursor: crosshair;
+  font-size: .8rem;
+  background-image: radial-gradient(
+    1.2rem 1.2rem,
+    circle closest-side,
+    black 0.5rem,
+    #ff8080 1.1rem,
+    #ff8080 1.2rem,
+    #cc0000 1.8rem
+  );
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+    rgba(275, 255, 255, 0.7) 0 0.1rem 0.1rem inset, darkred 0 0.3rem 0.4rem inset,
+    rgba(0, 0, 0, 0.3) 0 0.8rem 0.9rem inset,
+    rgba(255, 255, 275, 0.5) 0 -2px 3px inset, red 0 -7px 20px inset;
+}
+
+.coinreturn {
+  padding-top: 75px;
+  padding-bottom: 75px;
+  width: 310px;
+  margin: 40px auto; 
+  background-color: #121212;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  position: relative;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 1) 0 -3px 15px, rgba(0, 0, 0, 0.8) 0 4px 5px inset,
+  rgba(0, 0, 0, 0.5) 0 12px 5px inset,
+  rgba(0, 0, 0, 0.7) 0 -12px 5px inset, rgba(0, 0, 0, 0.8) 0 4px 8px, rgba(0, 0, 0, 0.8) 0 4px 8px,
+  rgba(139, 69, 19, 0.8) 0 4px 8px;
+}
+
+.slot {
+  background: black;
+  height: 100px;
+  width: 8px;
+  margin-left: 45px;
+  margin-right: 10px;
+  border: 1px darkgrey;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem
+}
+
+.slotf {
+  background: black;
+  height: 100px;
+  width: 8px;
+  margin-right: -20px;
+  border: 1px darkgrey;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem
+}
+
+button.logout {
+  margin-left: 0px;
+  text-shadow: black 2px 1px 5px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem inset, darkred 0 .6rem 0.8rem inset,
+  rgba(0, 0, 0, 0.3) 0 1.6rem 0.8rem inset,
+  rgba(255, 255, 255, 0.5) 0 -2px 3px inset, darkred 0 -7px 20px inset;
+  position: relative;
+  border-radius: 0;
+  height: 100px;
+  width: 75px;
+  color: red;
+  text-align: end;
+  font-size: 13px;
+  background-color:#420D09;
+  text-shadow: 0 0 3px #b43434, 0 0 7px rgb(95, 41, 41), 0 0 12px #be1a1a,
+  0 0 22px #e40808;
+  overflow: hide;
+}
+
+button.logout:before {
+  content: ""; 
+  position: absolute; 
+  top: 50%;
+  left: 40%; 
+  transform: translate(-50%, -50%);
+  border-radius: 0;
+  height: 145px;
+  width: 110px;
+  background-color: #1e1e1e;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 4px 5px inset,
+  rgba(0, 0, 0, 0.5) 0 12px 5px inset,
+  rgba(0, 0, 0, 0.7) 0 -12px 5px inset, rgba(0, 0, 0, 0.8) 0 4px 8px;
+}
+
+
+button.logout:before {
+  content: ""; 
+  position: absolute; 
+  top: 50%;
+  left: 40%; 
+  transform: translate(-50%, -50%);
+  border-radius: 0;
+  height: 145px;
+  width: 110px;
+  background-color: #1e1e1e;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 4px 5px inset,
+  rgba(0, 0, 0, 0.5) 0 12px 5px inset,
+  rgba(0, 0, 0, 0.7) 0 -12px 5px inset, rgba(0, 0, 0, 0.8) 0 4px 8px;
+}
+
+button.logout:hover {
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem inset,
+  rgba(205, 0, 0, 0.7) 0 .6rem 0.8rem inset,
+  rgba(0, 0, 0, 0.3) 0 1.6rem 0.8rem inset,
+  rgba(255, 255, 255, 0.5) 0 -2px 3px inset,
+  rgba(205, 0, 0, 0.5) 0 -7px 20px inset;
+  font-size: 12px;
+  text-shadow: 0 0 3px #b43434, 0 0 7px rgb(195, 41, 41), 0 0 12px #be1a1a,
+  0 0 22px #e40808;
+}
+
+button.logout:active {
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem inset,
+  rgba(105, 0, 0, 0.7) 0 .6rem 0.8rem inset,
+  rgba(0, 0, 0, 0.3) 0 1.6rem 0.8rem inset,
+  rgba(255, 255, 255, 0.5) 0 -2px 3px inset,
+  rgba(105, 0, 0, 0.5) 0 -7px 20px inset;
+  font-size: 10px;
+  text-shadow: 0 0 13px #b43434, 0 0 17px rgb(195, 41, 41), 0 0 12px #be1a1a,
+  0 0 22px #e40808;
+}
+
+button.login {
+  text-shadow: black 2px 1px 5px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem inset, darkred 0 .6rem 0.8rem inset,
+  rgba(0, 0, 0, 0.3) 0 1.6rem 0.8rem inset,
+  rgba(255, 255, 255, 0.5) 0 -2px 3px inset, darkred 0 -7px 20px inset;
+  position: relative;
+  border-radius: 0;
+  height: 100px;
+  width: 75px;
+  color: red;
+  text-align: end;
+  font-size: 18px;
+  background-color:#420D09;
+  text-shadow: 0 0 3px #b43434, 0 0 7px rgb(95, 41, 41), 0 0 12px #be1a1a,
+  0 0 22px #e40808;
+  overflow: hide;
+}
+
+button.login:before {
+  content: ""; 
+  position: absolute; 
+  top: 50%;
+  left: 40%; 
+  transform: translate(-50%, -50%);
+  border-radius: 0;
+  height: 145px;
+  width: 110px;
+  background-color: #1e1e1e;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 4px 5px inset,
+  rgba(0, 0, 0, 0.5) 0 12px 5px inset,
+  rgba(0, 0, 0, 0.7) 0 -12px 5px inset, rgba(0, 0, 0, 0.8) 0 4px 8px;
+}
+
+button.login:hover {
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem inset,
+  rgba(205, 0, 0, 0.7) 0 .6rem 0.8rem inset,
+  rgba(0, 0, 0, 0.3) 0 1.6rem 0.8rem inset,
+  rgba(255, 255, 255, 0.5) 0 -2px 3px inset,
+  rgba(205, 0, 0, 0.5) 0 -7px 20px inset;
+  font-size: 16px;
+  text-shadow: 0 0 3px #b43434, 0 0 7px rgb(195, 41, 41), 0 0 12px #be1a1a,
+  0 0 22px #e40808;
+}
+
+button.login:active {
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 0.4rem 0.2rem,
+  rgba(255, 255, 255, 0.7) 0 0.1rem 0.1rem inset,
+  rgba(105, 0, 0, 0.7) 0 .6rem 0.8rem inset,
+  rgba(0, 0, 0, 0.3) 0 1.6rem 0.8rem inset,
+  rgba(255, 255, 255, 0.5) 0 -2px 3px inset,
+  rgba(105, 0, 0, 0.5) 0 -7px 20px inset;
+  font-size: 12px;
+  text-shadow: 0 0 13px #b43434, 0 0 17px rgb(195, 41, 41), 0 0 12px #be1a1a,
+  0 0 22px #e40808;
 }

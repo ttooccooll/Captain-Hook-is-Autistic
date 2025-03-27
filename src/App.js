@@ -89,6 +89,12 @@ const App = () => {
         <Route path="/payment" element={<Payment onPaymentSuccess={handlePaymentSuccess} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <div className="coinreturn" >
+          <div className="slotf"></div>
+          <button className="login" onClick={() => {  }} >------<br />LOGIN<br />------</button>
+          <div className="slot"></div>
+          <button className="logout" onClick={() => {  }} >-------------<br />LOGOUT<br />-------------</button>
+      </div>
     </Router>
   );
 };
