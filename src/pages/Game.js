@@ -34,6 +34,16 @@ const initialQuestions = [
   { text: "Good Will Hunting hires Batman to race at Le Mans?", answer: "Ford v Ferrari" },
   { text: "Cameron Poe steels a baby?", answer: "Raising Arizona" },
   { text: "Sally has an epic blind date with Otto?", answer: "Sleepless in Seattle" },
+  { text: "Romeo Montague takes many epic naps with Edward Snowden?", answer: "Inception" },
+  { text: "Jay Gatsby and Abraham Lincoln lead opposing sides in a violent gang war?", answer: "Gangs of New York" },
+  { text: "Miranda Priestly falls in love with Dirty Harry?", answer: "Bridges of Madison County" },
+  { text: "Ripley dates Steve Zissou?", answer: "Ghost Busters" },
+  { text: "Miracle Max meets, befriends and falls in love with Goose’s wife?", answer: "When Harry Met Sally" },
+  { text: "the Fresh Prince, the Fly, Data, and Lone Starr defend Earth against an alien invasion?", answer: "Independence Day" },
+  { text: "Agent K hunts down Han Solo?", answer: "The Fugitive" },
+  { text: "Billie Jean King and Ken dance their way through LA?", answer: "La La Land" },
+  { text: "Mary Poppins evades the Nazis with Dr. Parnassus?", answer: "The Sound of Music" },
+  { text: "Catwoman stomped on Captain Kirk's foot in front of Mary Poppins and Gimli?", answer: "The Princess Diaries" },
 ];
 
 const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
