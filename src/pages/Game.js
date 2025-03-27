@@ -29,6 +29,10 @@ const initialQuestions = [
   { text: "the Godfather tempts Neo to join his law firm in NYC?", answer: "The Devil's Advocate" },
   { text: "Dr. Dolittle and Dr. Evil save a princess?", answer: "Shrek" },
   { text: "the six-fingered man has an eleven-notched nob?", answer: "This is Spinal Tap" },
+  { text: "Maverick and Hercule Poirot conspire against the Nazis?", answer: "Valkyrie" },
+  { text: "Darth Vader haunts Robin Hood into a construction project?", answer: "Field of Dreams" },
+  { text: "Good Will Hunting hires Batman to race at Le Mans?", answer: "Ford v Ferrari" },
+  { text: "Cameron Poe steels a baby?", answer: "Raising Arizona" },
 ];
 
 const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {

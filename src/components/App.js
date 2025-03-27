@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from '../pages/Home';
 import Game from '../pages/Game';
 import Score from '../pages/Score';
+import SignIn from '../components/SignIn';
+import Payment from '../components/Payment';
 import localForage from 'localforage';
 
 const App = () => {
@@ -39,12 +41,12 @@ const App = () => {
 
     if (newGameCount === 2 && !hasSignedIn) {
       // Prompt for WebLN sign-in
-      setHasSignedIn(true);
-      localForage.setItem('hasSignedIn', true);
+      setShowScore(false);
+      setFinalScore(0);
     } else if (newGameCount === 3 && !hasPaid) {
       // Prompt for payment
-      setHasPaid(true);
-      localForage.setItem('hasPaid', true);
+      setShowScore(false);
+      setFinalScore(0);
     }
   };
 
@@ -52,9 +54,16 @@ const App = () => {
     // Reset game state
     setShowScore(false);
     setFinalScore(0);
+  };
 
-    // Navigate back to the game page
-    // This will trigger a new game instance
+  const handleSignInSuccess = () => {
+    setHasSignedIn(true);
+    localForage.setItem('hasSignedIn', true);
+  };
+
+  const handlePaymentSuccess = () => {
+    setHasPaid(true);
+    localForage.setItem('hasPaid', true);
   };
 
   return (
@@ -72,6 +81,8 @@ const App = () => {
           )
         } />
         <Route path="/score" element={<Score score={finalScore} totalQuestions={10} onPlayAgain={handlePlayAgain} />} />
+        <Route path="/signin" element={<SignIn onSignIn={handleSignInSuccess} />} />
+        <Route path="/payment" element={<Payment onPaymentSuccess={handlePaymentSuccess} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
