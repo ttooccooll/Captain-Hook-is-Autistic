@@ -32,7 +32,7 @@ const initialQuestions = [
 ];
 
 const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
-    const [questions, setQuestions] = useState(shuffleArray([...initialQuestions]));
+    const [questions] = useState(shuffleArray([...initialQuestions]).slice(0, 10));
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [userAnswers, setUserAnswers] = useState([]);
     const [score, setScore] = useState(0);
@@ -50,10 +50,10 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
     }, [gameCount, hasSignedIn, hasPaid]);
   
     const handleAnswer = (answer) => {
-      setUserAnswers([...userAnswers, answer]);
-      const isCorrectAnswer = answer.toLowerCase() === questions[currentQuestion].answer.toLowerCase();
-      setIsCorrect(isCorrectAnswer);
-      setShowFeedback(true);
+        setUserAnswers([...userAnswers, answer]);
+        const isCorrectAnswer = answer.toLowerCase().trim() === questions[currentQuestion].answer.toLowerCase().trim();
+        setIsCorrect(isCorrectAnswer);
+        setShowFeedback(true);
   
       if (isCorrectAnswer) {
         setScore(score + 1);
@@ -65,9 +65,10 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
         if (currentQuestion + 1 < questions.length) {
           setCurrentQuestion(currentQuestion + 1);
         } else {
+          console.log("Game complete. Score:", score);
           onGameComplete(score);
         }
-      }, 1500); // Delay for 1.5 seconds
+      }, 1500);
     };
   
     const handleSignInSuccess = () => {
@@ -88,7 +89,7 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
               <div>
                 <Question question={questions[currentQuestion].text} onAnswer={handleAnswer} />
                 {showFeedback && (
-                  <div style={{ marginTop: '10px', color: isCorrect ? 'green' : 'red' }}>
+                  <div style={{ margin: '10px', color: isCorrect ? 'green' : 'red' }}>
                     {isCorrect ? 'Correct!' : `Wrong! The correct answer is ${questions[currentQuestion].answer}.`}
                   </div>
                 )}
