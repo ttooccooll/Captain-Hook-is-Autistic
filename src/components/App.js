@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import Game from '../pages/Game';
 import Score from '../pages/Score';
@@ -48,6 +48,15 @@ const App = () => {
     }
   };
 
+  const handlePlayAgain = () => {
+    // Reset game state
+    setShowScore(false);
+    setFinalScore(0);
+
+    // Navigate back to the game page
+    // This will trigger a new game instance
+  };
+
   return (
     <Router>
       <Routes>
@@ -62,7 +71,7 @@ const App = () => {
             />
           )
         } />
-        <Route path="/score" element={<Score score={finalScore} totalQuestions={10} />} />
+        <Route path="/score" element={<Score score={finalScore} totalQuestions={10} onPlayAgain={handlePlayAgain} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
