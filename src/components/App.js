@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Updated import
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
 import Game from '../pages/Game';
 import Score from '../pages/Score';
@@ -10,6 +9,8 @@ const App = () => {
   const [gameCount, setGameCount] = useState(0);
   const [hasSignedIn, setHasSignedIn] = useState(false);
   const [hasPaid, setHasPaid] = useState(false);
+  const [showScore, setShowScore] = useState(false);
+  const [finalScore, setFinalScore] = useState(0);
 
   useEffect(() => {
     // Load game count from local storage
@@ -33,6 +34,9 @@ const App = () => {
     setGameCount(newGameCount);
     localForage.setItem('gameCount', newGameCount);
 
+    setFinalScore(score);
+    setShowScore(true);
+
     if (newGameCount === 2 && !hasSignedIn) {
       // Prompt for WebLN sign-in
       setHasSignedIn(true);
@@ -46,15 +50,20 @@ const App = () => {
 
   return (
     <Router>
-      <Routes> {/* Updated from Switch to Routes */}
-        <Route path="/" element={<Home />} /> {/* Updated to use element prop */}
-        <Route path="/game" element={<Game 
-          onGameComplete={handleGameComplete} 
-          hasSignedIn={hasSignedIn} 
-          hasPaid={hasPaid} 
-          gameCount={gameCount}
-        />} /> {/* Updated to use element prop */}
-        <Route path="/score" element={<Score />} /> {/* Updated to use element prop */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/game" element={
+          showScore ? <Navigate to="/score" /> : (
+            <Game 
+              onGameComplete={handleGameComplete} 
+              hasSignedIn={hasSignedIn} 
+              hasPaid={hasPaid} 
+              gameCount={gameCount}
+            />
+          )
+        } />
+        <Route path="/score" element={<Score score={finalScore} totalQuestions={10} />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );

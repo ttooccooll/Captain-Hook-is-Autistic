@@ -56,7 +56,7 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
         setShowFeedback(true);
   
       if (isCorrectAnswer) {
-        setScore(score + 1);
+        setScore(prevScore => prevScore + 1);
       }
   
       // Move to the next question after a short delay
@@ -65,8 +65,11 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
         if (currentQuestion + 1 < questions.length) {
           setCurrentQuestion(currentQuestion + 1);
         } else {
-          console.log("Game complete. Score:", score);
-          onGameComplete(score);
+            setScore(prevScore => {
+                console.log("Final Score:", prevScore);
+                onGameComplete(prevScore);
+                return prevScore;
+            });
         }
       }, 1500);
     };
