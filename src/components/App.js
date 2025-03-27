@@ -43,7 +43,7 @@ const App = () => {
       // Prompt for WebLN sign-in
       setShowScore(false);
       setFinalScore(0);
-    } else if (newGameCount === 3 && !hasPaid) {
+    } else if (newGameCount >= 3 && !hasPaid) {
       // Prompt for payment
       setShowScore(false);
       setFinalScore(0);
@@ -59,11 +59,15 @@ const App = () => {
   const handleSignInSuccess = () => {
     setHasSignedIn(true);
     localForage.setItem('hasSignedIn', true);
+    setShowScore(false);
+    setFinalScore(0);
   };
 
   const handlePaymentSuccess = () => {
     setHasPaid(true);
     localForage.setItem('hasPaid', true);
+    setShowScore(false);
+    setFinalScore(0);
   };
 
   return (

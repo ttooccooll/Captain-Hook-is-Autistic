@@ -33,6 +33,7 @@ const initialQuestions = [
   { text: "Darth Vader haunts Robin Hood into a construction project?", answer: "Field of Dreams" },
   { text: "Good Will Hunting hires Batman to race at Le Mans?", answer: "Ford v Ferrari" },
   { text: "Cameron Poe steels a baby?", answer: "Raising Arizona" },
+  { text: "Sally has an epic blind date with Otto?", answer: "Sleepless in Seattle" },
 ];
 
 const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
@@ -46,10 +47,13 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
     const [showFeedback, setShowFeedback] = useState(false); // Track if feedback should be shown
   
     useEffect(() => {
+      console.log("Game component mounted");
       if (gameCount === 2 && !hasSignedIn) {
         setShowSignIn(true);
-      } else if (gameCount === 3 && !hasPaid) {
+        console.log("Show SignIn");
+      } else if (gameCount >= 3 && !hasPaid) {
         setShowPayment(true);
+        console.log("Show Payment");
       }
     }, [gameCount, hasSignedIn, hasPaid]);
   

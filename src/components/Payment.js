@@ -7,7 +7,7 @@ const Payment = ({ onPaymentSuccess }) => {
         throw new Error("WebLN provider not found. Please install a WebLN-compatible wallet.");
       }
 
-      const invoice = "lnbc1u1pn72e02sp5qpcyktjc4fqcc8k3dzwdm00dun5tj3vv52k2qsmt5dqvp6lm4k3qpp520dex8aje34ehtzj9fklv2ykdur0evtgfcsud7f684jzpumwtecshp5uwcvgs5clswpfxhm7nyfjmaeysn6us0yvjdexn9yjkv3k7zjhp2sxq9z0rgqcqpnrzjqwuyhm4rwjccnjvkpw5g3jtxhjdwmux6p0qvqk9upadaalt03qg4vrt7puqqjesqqyqqqqlgqqqqztqq2q9qxpqysgq4etupss8z7cg5y7mz2jx48dw2m2mlukrtern96z7cmlkfwkzym59g72dt5rtmhsvant9a6cg80q2eyqaa7s6ntyny3ptdakguljgjagqp287yk";
+      const invoice = "lnbc1u1pn72l40sp5zc0z0gtm0zk34kea6sh6x5vm7r5727xwrzctcjdkwwwax4zshhmspp5q9nl680e48q3f2zksf807h5f0zdtfzyzwdwfes9x983sutwwyh3shp5uwcvgs5clswpfxhm7nyfjmaeysn6us0yvjdexn9yjkv3k7zjhp2sxq9z0rgqcqpnrzjqwsl8t7kgmthhkh4ghxw4ureh2mq2l4w2trrrxmrkkqr6zvf66nj7rv03cqqpfcqqqqqqqqqqqqqqqqqjq9qxpqysgqyp9f3unwmp5ftpedx2pmw2klmqa55kf4gm9ukjnqy2wqp0a55dxyn8j7830k76kr4gwe4pcun5lz7g3rzsshvv79h06jwjncqdvxsrcqc5jz57";
       console.log("Requesting payment...");
       const response = await window.webln.sendPayment(invoice);
       console.log("Payment response:", response);
