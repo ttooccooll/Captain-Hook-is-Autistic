@@ -91,9 +91,9 @@ const App = () => {
       </Routes>
       <div className="coinreturn" >
           <div className="slotf"></div>
-          <button className="login" onClick={() => {  }} >------<br />LOGIN<br />------</button>
+          <button className="login" onClick={() => {  }} >------<br />STUFF<br />------</button>
           <div className="slot"></div>
-          <button className="logout" onClick={() => {  }} >-------------<br />LOGOUT<br />-------------</button>
+          <button className="logout" onClick={() => {  }} >-------------<br />THINGS<br />-------------</button>
       </div>
     </Router>
   );

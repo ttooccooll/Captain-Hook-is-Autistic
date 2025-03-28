@@ -11,15 +11,15 @@ const Question = ({ question, onAnswer }) => {
 
   return (
     <div>
-      <h2>{`What's that movie where ${question}`}</h2>
+      <h1>{`What's that movie where ${question}`}</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
-          placeholder="Type your answer here"
+          placeholder="Type your answer here and hit the button when you think you have it."
         />
-        <button style={{ marginTop: '2rem' }} type="submit">Submit</button>
+        <button style={{ marginTop: '2rem' }} type="submit"></button>
       </form>
     </div>
   );

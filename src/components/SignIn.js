@@ -31,8 +31,8 @@ const SignIn = ({ onSignIn }) => {
 
   return (
     <div>
-      <h2>Sign In with WebLN. You are not being charged yet.</h2>
-      <button onClick={handleSignIn}>Sign In</button>
+      <h1>Sign In with WebLN. You are not being charged yet.</h1>
+      <button onClick={handleSignIn}></button>
     </div>
   );
 };

@@ -6,9 +6,12 @@ const Home = () => {
   return (
     <div>
       <h1>Captain Hook is Autistic</h1>
-      <Link to="/game">
-        <button>Start Game</button>
-      </Link>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <h2>Click the button to start the game.</h2>
+        <Link to="/game">
+          <button></button>
+        </Link>
+      </div>
     </div>
   );
 };

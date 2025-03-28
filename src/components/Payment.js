@@ -27,8 +27,8 @@ const Payment = ({ onPaymentSuccess }) => {
 
   return (
     <div>
-      <h2>Pay 100 sats to play again</h2>
-      <button onClick={handlePayment}>Pay</button>
+      <h1>Pay 100 sats to play again</h1>
+      <button onClick={handlePayment}></button>
     </div>
   );
 };

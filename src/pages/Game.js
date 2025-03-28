@@ -126,7 +126,7 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
               <div>
                 <Question question={questions[currentQuestion].text} onAnswer={handleAnswer} />
                 {showFeedback && (
-                  <div className="grading" style={{ marginTop: '2rem', color: isCorrect ? 'green' : 'red' }}>
+                  <div className="grading" style={{ marginTop: '2rem', color: isCorrect ? 'white' : 'red' }}>
                     {isCorrect ? 'Correct!' : `Wrong! The correct answer is ${questions[currentQuestion].answer}.`}
                   </div>
                 )}

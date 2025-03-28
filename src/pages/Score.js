@@ -11,7 +11,7 @@ const Score = ({ score, totalQuestions, onPlayAgain }) => {
 
   return (
     <div>
-      <h2>Game Over</h2>
+      <h1>Game Over</h1>
       <p>Your score: {score}/{totalQuestions}</p>
       <button onClick={handlePlayAgainClick}>Play Again</button>
     </div>
