@@ -3,8 +3,14 @@ import { LightningAddress } from "@getalby/lightning-tools";
 
 const ln = new LightningAddress("jasonbohio@getalby.com");
 
+const playMP3 = () => {
+  const audio = new Audio("/sounds/kingm.mp3");
+  audio.play();
+};
+
 const Payment = ({ onPaymentSuccess }) => {
   const handlePayment = async () => {
+    playMP3();
     try {
       if (!window.webln) {
         throw new Error("WebLN provider not found. Please install a WebLN-compatible wallet.");

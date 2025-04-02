@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 const Question = ({ question, onAnswer }) => {
   const [answer, setAnswer] = useState('');
 
+  const playMP3 = () => {
+    const audio = new Audio("/sounds/kingm.mp3");
+    audio.play();
+  };
+
   const handleSubmit = (e) => {
+    playMP3();
     e.preventDefault();
     onAnswer(answer);
     setAnswer(''); // Clear the input after submission

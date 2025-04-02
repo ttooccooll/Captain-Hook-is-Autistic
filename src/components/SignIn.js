@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 
-const SignIn = ({ onSignIn }) => {
+const playMP3 = () => {
+  const audio = new Audio("/sounds/kingm.mp3");
+  audio.play();
+};
+
+const SignIn = ({ onSignIn, score, totalQuestions  }) => {
   useEffect(() => {
     // Check if WebLN is available
     if (!window.webln) {
@@ -9,6 +14,7 @@ const SignIn = ({ onSignIn }) => {
   }, []);
 
   const handleSignIn = async () => {
+    playMP3();
     try {
       if (!window.webln) {
         throw new Error("WebLN provider not found. Please install a WebLN-compatible wallet.");

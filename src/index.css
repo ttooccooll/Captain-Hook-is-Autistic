@@ -27,9 +27,15 @@ h3 {
   margin: 0;
 }
 
+.gameover {
+  padding-bottom: 1em;
+  font-size: 2em;
+}
+
 .grading {
   font-size: 3rem;
-  z-index: 1001;
+  z-index: 9999;
+  position: absolute;
 }
 
 input {

@@ -115,6 +115,11 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
       setShowPayment(false);
       resetGame(); // Reset game state after payment
     };
+
+    const playSound = () => {
+      const audio = new Audio("/sounds/coinreturn.mp3");
+      audio.play();
+    };
   
     return (
       <div>
@@ -138,9 +143,9 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
         )}
         <div className="coinreturn" >
           <div className="slotf"></div>
-          <button className="login" onClick={() => { setShowPayment(true) }} >------<br />PAY<br />------</button>
+          <button className="login" onClick={() => { setShowPayment(true); playSound(); }} >------<br />PAY<br />------</button>
           <div className="slot"></div>
-          <button className="logout" onClick={() => { setShowSignIn(true) }} >-------------<br />LOGIN<br />-------------</button>
+          <button className="logout" onClick={() => { setShowSignIn(true); playSound(); }} >-------------<br />LOGIN<br />-------------</button>
         </div>
       </div>
     );

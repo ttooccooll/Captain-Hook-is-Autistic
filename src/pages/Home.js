@@ -1,16 +1,34 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+const playMP3 = () => {
+  const audio = new Audio("/sounds/kingm.mp3");
+  audio.play();
+};
 
 const Home = () => {
+  const [navigateToGame, setNavigateToGame] = useState(false);
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    playMP3();
+    setTimeout(() => {
+      setNavigateToGame(true);
+    }, 250);
+  };
+
+  if (navigateToGame) {
+    navigate('/game');
+    return null;
+  }
+
   return (
     <div>
       <h1>Captain Hook is Autistic</h1>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <h2>Click the button to start the game.</h2>
-        <Link to="/game">
-          <button></button>
-        </Link>
+        <button onClick={handleButtonClick}>
+        </button>
       </div>
     </div>
   );
