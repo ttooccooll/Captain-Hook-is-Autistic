@@ -83,9 +83,8 @@ const App = () => {
 
   const calculateAverageScore = () => {
     if (scores.length === 0) return 0;
-    const totalPoints = scores.reduce((acc, score) => acc + score, 0);
-    const totalQuestions = scores.length * 10;
-    return totalPoints / totalQuestions;
+    const sum = scores.reduce((acc, score) => acc + score, 0);
+    return sum / scores.length;
   };
 
   return (
@@ -103,7 +102,7 @@ const App = () => {
           )
         } />
         <Route path="/score" element={<Score score={finalScore} totalQuestions={10} onPlayAgain={handlePlayAgain} />} />
-        <Route path="/stats" element={<Stats score={finalScore} totalQuestions={10} onPlayAgain={handlePlayAgain} gameCount={gameCount} count="total" averageScore={calculateAverageScore()} />} />
+        <Route path="/stats" element={<Stats score={finalScore} totalQuestions={10} onPlayAgain={handlePlayAgain} gameCount={gameCount} averageScore={calculateAverageScore()} />} />
         <Route path="/signin" element={<SignIn onSignIn={handleSignInSuccess} />} />
         <Route path="/payment" element={<Payment onPaymentSuccess={handlePaymentSuccess} />} />
         <Route path="*" element={<Navigate to="/" />} />
