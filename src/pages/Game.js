@@ -3,6 +3,7 @@ import Question from '../components/Question';
 import Result from '../components/Result';
 import SignIn from '../components/SignIn';
 import Payment from '../components/Payment';
+import { useNavigate } from 'react-router-dom';
 
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -13,8 +14,8 @@ const shuffleArray = (array) => {
 };
 
 const initialQuestions = [
-  { text: "Captain Hook is autistic and the last samurai takes him to Las Vegas?", answer: "Rainman" },
-  { text: "Miss Piggy’s trains someone to kill Mufasa?", answer: "The Empire Strikes Back" },
+  { text: "Captain Hook is autistic and the last samurai takes him on a road trip to Vegas?", answer: "Rainman" },
+  { text: "Miss Piggy trains someone to kill Mufasa?", answer: "The Empire Strikes Back" },
   { text: "Moses dresses down the Terminator?", answer: "True Lies" },
   { text: "Mauricio Gucci kills Indiana Jones?", answer: "The Last Jedi" },
   { text: "Forest Gump is lost in space with Harry Truman?", answer: "Apollo 13" },
@@ -120,6 +121,18 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
       const audio = new Audio("/sounds/coinreturn.mp3");
       audio.play();
     };
+
+    const playMP3 = () => {
+      const audio = new Audio("/sounds/kingm.mp3");
+      audio.play();
+    };
+
+    const navigate = useNavigate();
+
+    const handleStatsClick = () => {
+      playMP3();
+      navigate('/stats');
+    };
   
     return (
       <div>
@@ -145,7 +158,7 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
           <div className="slotf"></div>
           <button className="login" onClick={() => { setShowPayment(true); playSound(); }} >------<br />PAY<br />------</button>
           <div className="slot"></div>
-          <button className="logout" onClick={() => { setShowSignIn(true); playSound(); }} >-------------<br />LOGIN<br />-------------</button>
+          <button className="logout" onClick={handleStatsClick} >-------------<br />STATS<br />-------------</button>
         </div>
       </div>
     );
