@@ -122,15 +122,10 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
       audio.play();
     };
 
-    const playMP3 = () => {
-      const audio = new Audio("/sounds/kingm.mp3");
-      audio.play();
-    };
-
     const navigate = useNavigate();
 
     const handleStatsClick = () => {
-      playMP3();
+      playSound();
       navigate('/stats');
     };
   

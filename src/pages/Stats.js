@@ -5,7 +5,7 @@ const Stats = ({ score, totalQuestions, onPlayAgain, gameCount = 0, count = '', 
   const navigate = useNavigate();
 
   const playMP3 = () => {
-    const audio = new Audio("/sounds/coinreturn.mp3");
+    const audio = new Audio("/sounds/kingm.mp3");
     audio.play();
   };
 
