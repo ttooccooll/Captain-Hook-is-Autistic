@@ -11,7 +11,7 @@ const Question = ({ question, onAnswer }) => {
 
   return (
     <div>
-      <h1>{`What's that movie where ${question}`}</h1>
+      <h1 className='questions' >{`What's that movie where ${question}`}</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

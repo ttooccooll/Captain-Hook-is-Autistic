@@ -1,4 +1,7 @@
 import React from 'react';
+import { LightningAddress } from "@getalby/lightning-tools";
+
+const ln = new LightningAddress("jasonbohio@getalby.com");
 
 const Payment = ({ onPaymentSuccess }) => {
   const handlePayment = async () => {
@@ -6,14 +9,19 @@ const Payment = ({ onPaymentSuccess }) => {
       if (!window.webln) {
         throw new Error("WebLN provider not found. Please install a WebLN-compatible wallet.");
       }
-
-      const invoice = "";
+      await window.webln.enable();
+      await ln.fetch();
+      const invoice = await ln.requestInvoice({ satoshi: 100 });
       console.log("Requesting payment...");
-      const response = await window.webln.sendPayment(invoice);
+
+      await window.webln.enable();
+      const response = await window.webln.sendPayment(invoice.paymentRequest);
       console.log("Payment response:", response);
 
-      if (response.preimage) {
-        console.log("Payment successful.");
+      const paid = invoice.validatePreimage(response.preimage);
+
+      if (paid) {
+        console.log(invoice.preimage);
         onPaymentSuccess();
       } else {
         console.log("Payment failed: No preimage received.");

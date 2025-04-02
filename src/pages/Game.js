@@ -136,6 +136,12 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
             )}
           </>
         )}
+        <div className="coinreturn" >
+          <div className="slotf"></div>
+          <button className="login" onClick={() => { setShowPayment(true) }} >------<br />PAY<br />------</button>
+          <div className="slot"></div>
+          <button className="logout" onClick={() => { setShowSignIn(true) }} >-------------<br />LOGIN<br />-------------</button>
+        </div>
       </div>
     );
   };

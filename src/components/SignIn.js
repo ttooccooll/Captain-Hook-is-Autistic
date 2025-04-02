@@ -31,7 +31,7 @@ const SignIn = ({ onSignIn }) => {
 
   return (
     <div>
-      <h1>Sign In with WebLN. You are not being charged yet.</h1>
+      <h1>To continue, please sign in with your favorite bitcoin browser wallet. You are not being charged yet.</h1>
       <button onClick={handleSignIn}></button>
     </div>
   );
