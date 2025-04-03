@@ -153,7 +153,7 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
             return prevScore;
           });
         }
-      }, 1500);
+      }, 2000);
     };
   
     const handleSignInSuccess = () => {
