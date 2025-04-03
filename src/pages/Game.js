@@ -4,14 +4,7 @@ import Result from '../components/Result';
 import SignIn from '../components/SignIn';
 import Payment from '../components/Payment';
 import { useNavigate } from 'react-router-dom';
-
-const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-};
+import FuzzySet from 'fuzzyset.js';
 
 const initialQuestions = [
   { text: "Captain Hook is autistic and the last samurai takes him on a road trip to Vegas?", answer: "Rainman" },
@@ -56,7 +49,7 @@ const initialQuestions = [
   { text: "Mulder exposes Buddy the Elf’s nefarious plot to brainwash Walter Mitty, turning him into an assassin?", answer: "Zoolander" },
   { text: "Beatrice narrates Mugatu’s life to his great confusion and frustration?", answer: "Stranger than Fiction" },
   { text: "Neo and his goons trick Macbeth and the dead poet to publicly jilt Selene at the altar even though Miss Pettigrew swears her cousin is innocent of the accusation? Good thing Batman is there to save the day.", answer: "Much Ado About Nothing" },
-  { text: "Eliza Doolittle comes back from Paris all grown up and falls in love with Richard Blaine?", answer: "The Two Towers" },
+  { text: "Eliza Doolittle comes back from Paris all grown up and falls in love with Richard Blaine?", answer: "Sabrina" },
   { text: "Mrs. Potts is totally unfazed by Smaug’s evil plan?", answer: "The Grinch" },
   { text: "Tyler Durden, Michael Scott, and Ken take a page out of Dick Chaney's book and make millions?", answer: "The Big Short" },
   { text: "Hermoine’s sister marries Bob Dylan?", answer: "Little Women" },
@@ -85,6 +78,19 @@ const initialQuestions = [
   { text: "George Bailey executes a filibuster?", answer: "Mr. Smith Goes to Washington" },
   { text: "Benjamin Button and Ethan Hunt Visit the Desperado in the catacombs under Paris?", answer: "Interview with the Vampire" },
 ];
+
+const fuzzySet = FuzzySet();
+initialQuestions.forEach(question => {
+  fuzzySet.add(question.answer);
+});
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
 const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
     const [questions, setQuestions] = useState(shuffleArray([...initialQuestions]).slice(0, 10));
@@ -122,10 +128,14 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
     };
   
     const handleAnswer = (answer) => {
-        setUserAnswers([...userAnswers, answer]);
-        const isCorrectAnswer = answer.toLowerCase().trim() === questions[currentQuestion].answer.toLowerCase().trim();
-        setIsCorrect(isCorrectAnswer);
-        setShowFeedback(true);
+      setUserAnswers([...userAnswers, answer]);
+      const userAnswer = answer.toLowerCase().trim();
+      const fuzzyMatch = fuzzySet.get(userAnswer);
+  
+      // Check if the fuzzy match score is above a certain threshold
+      const isCorrectAnswer = fuzzyMatch && fuzzyMatch[0] && fuzzyMatch[0][0] > 0.8;
+      setIsCorrect(isCorrectAnswer);
+      setShowFeedback(true);
   
       if (isCorrectAnswer) {
         setScore(prevScore => prevScore + 1);
@@ -137,11 +147,11 @@ const Game = ({ onGameComplete, hasSignedIn, hasPaid, gameCount }) => {
         if (currentQuestion + 1 < questions.length) {
           setCurrentQuestion(currentQuestion + 1);
         } else {
-            setScore(prevScore => {
-                console.log("Final Score:", prevScore);
-                onGameComplete(prevScore);
-                return prevScore;
-            });
+          setScore(prevScore => {
+            console.log("Final Score:", prevScore);
+            onGameComplete(prevScore);
+            return prevScore;
+          });
         }
       }, 1500);
     };
