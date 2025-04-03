@@ -313,3 +313,21 @@ button.login:active {
   text-shadow: 0 0 13px #b43434, 0 0 17px rgb(195, 41, 41), 0 0 12px #be1a1a,
   0 0 22px #e40808;
 }
+
+@media screen and (max-width: 760px) {
+  h1, h4, h5, strong, b {
+    font-size: 25px;
+  }
+  input {
+    width: 95%;
+    padding:5px;
+    font-size: 10px;
+  }
+  .grading {
+    font-size: 20px;
+  }
+  h2, h3 {
+    font-size: 20px;
+    margin: 0;
+  } 
+}
