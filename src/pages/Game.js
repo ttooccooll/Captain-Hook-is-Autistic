@@ -70,7 +70,7 @@ const initialQuestions = [
   { text: "Alfie and Mary fall in love while, on the other side of the world, Barry and Rose also hit it off?", answer: "The Holiday" },
   { text: "President Bartlett is sent to assassinate The Godfather?", answer: "Apocalypse Now" },
   { text: "Maui and Mary Poppins explore the Amazon?", answer: "Jungle Cruise" },
-  { text: "Eric Cartman is Michael Scott’s estranged brother?", answer: "Despicable Me 3" },
+  { text: "Michael Scott and the forty year old virgin have to thwart Eric Cartman before he destroys Hollywood?", answer: "Despicable Me 3" },
   { text: "Danny Tanner berates Ahchoo for not being adequately addicted?", answer: "Half Baked" },
   { text: "Qui-Gon Jinn will find you and kill you?", answer: "Taken" },
   { text: "Timon and the Genie have to put on a show for Lex Luthor and his wife?", answer: "The Birdcage" },
