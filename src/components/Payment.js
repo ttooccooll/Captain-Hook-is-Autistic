@@ -13,7 +13,7 @@ const Payment = ({ onPaymentSuccess }) => {
     playMP3();
     try {
       if (!window.webln) {
-        throw new Error("WebLN provider not found. Please install a WebLN-compatible wallet.");
+        throw new Error("WebLN provider not found. Please install a WebLN-compatible wallet. (https://getalby.com/ or https://lightningjoule.com/ or https://github.com/fiatjaf/kwh/ for example)");
       }
       await window.webln.enable();
       await ln.fetch();
