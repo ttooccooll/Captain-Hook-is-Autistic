@@ -32,6 +32,10 @@ h3 {
   font-size: 2em;
 }
 
+.over {
+  font-size: 1.5em;
+}
+
 .grading {
   font-size: 3rem;
   z-index: 9999;
@@ -314,6 +318,21 @@ button.login:active {
   0 0 22px #e40808;
 }
 
+.credits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  position: fixed;
+  bottom: 4%;
+  left: 75%;
+  font-size: 30px;
+}
+
+a {
+  color: #d2aeae;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 760px) {
   h1, h4, h5, strong, b {
     font-size: 25px;
@@ -330,4 +349,8 @@ button.login:active {
     font-size: 20px;
     margin: 0;
   } 
+  .credits {
+    left: 20%;
+    font-size: 20px;
+  }
 }
