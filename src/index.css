@@ -360,4 +360,9 @@ a {
     left: 20%;
     font-size: 20px;
   }
+  .coinreturn {
+    transform: scale(.6);
+    left: 10%;
+    bottom: 1px;
+  }
 }
