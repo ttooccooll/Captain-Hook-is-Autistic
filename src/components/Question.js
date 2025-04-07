@@ -23,7 +23,7 @@ const Question = ({ question, onAnswer }) => {
           type="text"
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
-          placeholder="Type your answer here and hit the button when you think you have it."
+          placeholder="type here and hit button..."
         />
         <button style={{ marginTop: '2rem' }} type="submit"></button>
       </form>

@@ -3,3 +3,9 @@
     font-family: 'CustomFont';
     src: url('../fonts/GrandHotel-8zYz.ttf');
   }
+
+
+@font-face {
+  font-family: 'CustomBIT';
+  src: url('../fonts/PressStart2P-vaV7.ttf');
+}
