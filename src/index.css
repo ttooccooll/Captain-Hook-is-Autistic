@@ -360,9 +360,13 @@ a {
     left: 20%;
     font-size: 20px;
   }
+  .questions {
+    font-size: .8rem;
+    padding: 5px;
+  }
   .coinreturn {
-    transform: scale(.6);
+    transform: scale(.4);
     left: 10%;
-    bottom: 1px;
+    bottom: -5%;
   }
 }
