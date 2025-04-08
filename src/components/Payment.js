@@ -17,7 +17,7 @@ const Payment = ({ onPaymentSuccess }) => {
       }
       await window.webln.enable();
       await ln.fetch();
-      const invoice = await ln.requestInvoice({ satoshi: 100 });
+      const invoice = await ln.requestInvoice({ satoshi: 100, description: "Movie Trivia Game Fee"  });
       console.log("Requesting payment...");
 
       await window.webln.enable();
