@@ -18,7 +18,7 @@ const Stats = ({ score, totalQuestions, onPlayAgain, gameCount = 0, count = '', 
   return (
     <div>
       <p className='over'>Your most recent score: {score}/{totalQuestions}</p>
-      <p className='over'>You've played {gameCount} games.</p>
+      <p className='over'>Woah! You've already played {gameCount} games.</p>
       <p className='over'>Your average score: {averageScore.toFixed(2)}/10</p>
       <p className='over'>Would you like to play again?</p>
       <button onClick={handlePlayAgainClick}></button>
