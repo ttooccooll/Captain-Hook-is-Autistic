@@ -5,6 +5,7 @@ const Question = ({ question, onAnswer }) => {
 
   const playMP3 = () => {
     const audio = new Audio("/sounds/kingm.mp3");
+    audio.volume = 0.25;
     audio.play();
   };
 
