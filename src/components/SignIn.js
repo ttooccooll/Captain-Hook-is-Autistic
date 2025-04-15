@@ -8,7 +8,6 @@ const playMP3 = () => {
 
 const SignIn = ({ onSignIn, score, totalQuestions  }) => {
   useEffect(() => {
-    // Check if WebLN is available
     if (!window.webln) {
       alert("WebLN provider not found. Please install a WebLN-compatible wallet. (https://getalby.com/ or https://lightningjoule.com/ or https://github.com/fiatjaf/kwh/ for example)");
     }
