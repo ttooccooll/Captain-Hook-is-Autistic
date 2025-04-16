@@ -37,7 +37,7 @@ const SignIn = ({ onSignIn, score, totalQuestions  }) => {
 
   return (
     <div>
-      <h1>To continue, please sign in with your favorite bitcoin browser wallet. You are not being charged yet.</h1>
+      <h1>To continue, please sign in with your favorite bitcoin browser extension wallet. You are not being charged yet.</h1>
       <button onClick={handleSignIn}></button>
     </div>
   );
